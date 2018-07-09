@@ -2,5 +2,7 @@
     <string name="app_name">ToDoApp</string>
     <string name="user">User</string>
     <string name="pass">Password</string>
+    <string name="repeat_pass">Repeat password</string>
     <string name="login">Login</string>
+    <string name="register">Register</string>
 </resources>
