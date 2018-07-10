@@ -33,10 +33,10 @@
         android:text="@string/login" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/registerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/register"
-        android:layout_marginTop="@dimen/default_margin_top"/>
+        android:layout_marginTop="@dimen/default_margin_top"
+        android:text="@string/register" />
 </LinearLayout>
