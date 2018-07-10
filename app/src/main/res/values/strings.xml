@@ -13,4 +13,5 @@
     <string name="description">Description</string>
     <string name="date">Due date (yyyy-MM-dd)</string>
     <string name="priority">Priority</string>
+    <string name="login_error">Please input an username and a password at least 5 characters long</string>
 </resources>

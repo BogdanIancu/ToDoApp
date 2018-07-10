@@ -7,29 +7,30 @@
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/userEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/user"
-        android:inputType="textPersonName"/>
+        android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/passwordEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin_top"
         android:ems="10"
         android:hint="@string/pass"
-        android:inputType="textPassword"
-        android:layout_marginTop="@dimen/default_margin_top"/>
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/login"
-        android:layout_marginTop="@dimen/default_margin_top"/>
+        android:layout_marginTop="@dimen/default_margin_top"
+        android:onClick="Login"
+        android:text="@string/login" />
 
     <Button
         android:id="@+id/button2"
