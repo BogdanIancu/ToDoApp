@@ -7,7 +7,7 @@
     tools:context=".AddTaskActivity">
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/titleEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText7"
+        android:id="@+id/descriptionEditText"
         android:layout_width="wrap_content"
         android:layout_height="150dp"
         android:layout_marginEnd="8dp"
@@ -32,10 +32,10 @@
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText6" />
+        app:layout_constraintTop_toBottomOf="@+id/titleEditText" />
 
     <EditText
-        android:id="@+id/editText8"
+        android:id="@+id/dueDateEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -46,7 +46,7 @@
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText7" />
+        app:layout_constraintTop_toBottomOf="@+id/descriptionEditText" />
 
     <TextView
         android:id="@+id/textView2"
@@ -56,10 +56,10 @@
         android:layout_marginTop="32dp"
         android:text="@string/priority"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText8" />
+        app:layout_constraintTop_toBottomOf="@+id/dueDateEditText" />
 
     <SeekBar
-        android:id="@+id/seekBar2"
+        android:id="@+id/prioritySeekBar"
         style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:layout_width="149dp"
         android:layout_height="21dp"
@@ -70,17 +70,18 @@
         android:progress="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/editText8" />
+        app:layout_constraintTop_toBottomOf="@+id/dueDateEditText" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/addTaskButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
+        android:onClick="AddTaskToCalendar"
         android:text="@string/add_task"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar2" />
+        app:layout_constraintTop_toBottomOf="@+id/prioritySeekBar" />
 </android.support.constraint.ConstraintLayout>
