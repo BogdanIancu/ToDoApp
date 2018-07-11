@@ -28,6 +28,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:minWidth="150dp"
+        android:onClick="goToTaskList"
         android:text="@string/tasks_list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
