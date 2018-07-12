@@ -71,8 +71,9 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
+        boolean userFound = false;
         if(userList != null) {
-            boolean userFound = false;
+
             for(User u : userList) {
                 if (userEditTxt.getText().toString().equals(u.getName()) &&
                         passEditTxt.getText().toString().hashCode() == u.getPassword()) {
@@ -83,17 +84,16 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 }
             }
-
-            if(userFound) {
-                Intent intent =
-                        new Intent(MainActivity.this, MenuActivity.class);
-                startActivity(intent);
-            }
-            else {
-                Toast.makeText(getApplicationContext(),
-                        R.string.incorrect_login,
-                        Toast.LENGTH_LONG).show();
-            }
+        }
+        if(userFound) {
+            Intent intent =
+                    new Intent(MainActivity.this, MenuActivity.class);
+            startActivity(intent);
+        }
+        else {
+            Toast.makeText(getApplicationContext(),
+                    R.string.incorrect_login,
+                    Toast.LENGTH_LONG).show();
         }
 
     }
