@@ -41,6 +41,11 @@ public class MenuActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void Logout(View view) {
+        currentUser =null;
+        finish();
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == 100 && resultCode == RESULT_OK) {

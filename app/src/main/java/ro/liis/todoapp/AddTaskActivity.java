@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.SeekBar;
+import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -40,11 +41,21 @@ public class AddTaskActivity extends AppCompatActivity {
     public void AddTask(View view){
         Task t = new Task();
         t.title = titleEditText.getText().toString();
+        if(t.title.trim().length() == 0) {
+            Toast.makeText(getApplicationContext(), "Enter a title",
+                    Toast.LENGTH_LONG).show();
+            return;
+        }
         t.description = descEditText.getText().toString();
         t.priority = (short)prioritySeekBar.getProgress();
         try {
             t.dueDate = format.parse(dueDateEditText.getText().toString());
         } catch (ParseException e) {
+            if(dueDateEditText.getText().toString().length() > 0) {
+                Toast.makeText(getApplicationContext(), "Enter a valid date",
+                        Toast.LENGTH_LONG).show();
+                return;
+            }
             e.printStackTrace();
         }
 

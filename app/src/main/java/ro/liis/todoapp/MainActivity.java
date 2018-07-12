@@ -30,6 +30,16 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        EditText userEditTxt = findViewById(R.id.userEditText);
+        EditText passEditTxt = findViewById(R.id.passwordEditText);
+        userEditTxt.setText("");
+        passEditTxt.setText("");
+    }
+
     public void Login(View view){
         EditText userEditTxt = findViewById(R.id.userEditText);
         EditText passEditTxt = findViewById(R.id.passwordEditText);
