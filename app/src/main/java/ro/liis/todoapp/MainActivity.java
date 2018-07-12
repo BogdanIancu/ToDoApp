@@ -10,15 +10,34 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
+
 import ro.liis.todoapp.model.User;
 
 public class MainActivity extends AppCompatActivity {
+    public static ArrayList<User> userList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.e("MainActivity", "Aplicatia a pornit!");
+        Log.e("MainActivity", "Application started!");
+
+        try {
+            FileInputStream fileInputStream =
+                    openFileInput(RegisterActivity.usersFile);
+            ObjectInputStream stream = new ObjectInputStream(fileInputStream);
+            userList = (ArrayList<User>)stream.readObject();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
         Button registerBtn = findViewById(R.id.registerButton);
         registerBtn.setOnClickListener(new View.OnClickListener() {
@@ -43,13 +62,31 @@ public class MainActivity extends AppCompatActivity {
     public void Login(View view){
         EditText userEditTxt = findViewById(R.id.userEditText);
         EditText passEditTxt = findViewById(R.id.passwordEditText);
-        if(userEditTxt.getText().toString().trim().length() > 4 &&
-                passEditTxt.getText().toString().trim().length() > 4) {
-            if(userEditTxt.getText().toString().equals("admin") &&
-                    passEditTxt.getText().toString().equals("admin")) {
-                User user = new User("admin", "admin");
-                MenuActivity.currentUser = user;
-                Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+
+        if (userEditTxt.getText().toString().trim().length() <= 4 ||
+                passEditTxt.getText().toString().trim().length() <= 4) {
+            Toast.makeText(getApplicationContext(),
+                    R.string.login_error,
+                    Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if(userList != null) {
+            boolean userFound = false;
+            for(User u : userList) {
+                if (userEditTxt.getText().toString().equals(u.getName()) &&
+                        passEditTxt.getText().toString().hashCode() == u.getPassword()) {
+                    User user = new User(userEditTxt.getText().toString().trim(),
+                            passEditTxt.getText().toString().trim());
+                    MenuActivity.currentUser = user;
+                    userFound = true;
+                    break;
+                }
+            }
+
+            if(userFound) {
+                Intent intent =
+                        new Intent(MainActivity.this, MenuActivity.class);
                 startActivity(intent);
             }
             else {
@@ -58,10 +95,6 @@ public class MainActivity extends AppCompatActivity {
                         Toast.LENGTH_LONG).show();
             }
         }
-        else {
-            Toast.makeText(getApplicationContext(),
-                    R.string.login_error,
-                    Toast.LENGTH_LONG).show();
-        }
+
     }
 }
