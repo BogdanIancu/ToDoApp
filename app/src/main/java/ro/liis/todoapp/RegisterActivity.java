@@ -8,6 +8,9 @@ import android.widget.Toast;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 import ro.liis.todoapp.model.User;
 
@@ -35,8 +38,18 @@ public class RegisterActivity extends AppCompatActivity {
             try {
                 FileOutputStream fileOutputStream =
                         openFileOutput(usersFile, MODE_PRIVATE);
-
-            } catch (FileNotFoundException e) {
+                if(MainActivity.userList == null) {
+                    MainActivity.userList = new ArrayList<>();
+                }
+                MainActivity.userList.add(user);
+                ObjectOutputStream stream = new ObjectOutputStream(fileOutputStream);
+                stream.writeObject(MainActivity.userList);
+                stream.close();
+                fileOutputStream.close();
+                finish();
+            } catch (IOException e) {
+                Toast.makeText(getApplicationContext(), "Something went wrong",
+                        Toast.LENGTH_LONG).show();
                 e.printStackTrace();
             }
         }

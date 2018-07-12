@@ -41,5 +41,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/default_margin_top"
+        android:onClick="RegisterUser"
         android:text="@string/register" />
 </LinearLayout>

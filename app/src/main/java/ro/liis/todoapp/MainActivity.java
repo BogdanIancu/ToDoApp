@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
                     openFileInput(RegisterActivity.usersFile);
             ObjectInputStream stream = new ObjectInputStream(fileInputStream);
             userList = (ArrayList<User>)stream.readObject();
+            stream.close();
+            fileInputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

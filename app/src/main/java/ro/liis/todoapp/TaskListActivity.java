@@ -21,9 +21,11 @@ public class TaskListActivity extends AppCompatActivity {
         Intent intent = getIntent();
         ArrayList<Task> vector =
                 (ArrayList<Task>)intent.getSerializableExtra("list");
-        TaskAdapter adapter = new TaskAdapter(getApplicationContext(),
-                R.layout.task_item, vector);
-        ListView listView = findViewById(R.id.listView);
-        listView.setAdapter(adapter);
+        if(vector != null) {
+            TaskAdapter adapter = new TaskAdapter(getApplicationContext(),
+                    R.layout.task_item, vector);
+            ListView listView = findViewById(R.id.listView);
+            listView.setAdapter(adapter);
+        }
     }
 }
